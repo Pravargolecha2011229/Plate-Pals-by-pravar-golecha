@@ -55,18 +55,8 @@ ACHIEVEMENTS = {
     ]
 }
 
-COOKING_QUIZ = [
-    {"question": "What temperature is considered safe for cooking chicken?", "options": ["145°F", "165°F", "175°F", "185°F"], "correct": "165°F"},
-    {"question": "Which herb is commonly used in Italian cuisine?", "options": ["Basil", "Lemongrass", "Cumin", "Cardamom"], "correct": "Basil"},
-    {"question": "What is the main ingredient in traditional guacamole?", "options": ["Tomatoes", "Avocado", "Onions", "Lime"], "correct": "Avocado"},
-    {"question": "Which cooking method involves cooking food in hot oil?", "options": ["Braising", "Steaming", "Frying", "Roasting"], "correct": "Frying"},
-    {"question": "What does 'al dente' mean when cooking pasta?", "options": ["Soft and mushy", "Firm to the bite", "Overcooked", "Undercooked"], "correct": "Firm to the bite"},
-    {"question": "What is the purpose of resting meat after cooking?", "options": ["To cool it down", "To allow juices to redistribute", "To make it easier to cut", "To enhance flavor"], "correct": "To allow juices to redistribute"},
-    {"question": "Which spice is commonly known as 'Indian saffron'?", "options": ["Cardamom", "Turmeric", "Cumin", "Mustard"], "correct": "Turmeric"},
-    {"question": "What is the primary ingredient in Punjabi lassi?", "options": ["Coconut milk", "Yogurt", "Condensed milk", "Buttermilk"], "correct": "Yogurt"},
-    {"question": "Which rice is used for biryani?", "options": ["Jasmine", "Brown", "Basmati", "Arborio"], "correct": "Basmati"},
-    {"question": "What is the main ingredient in hummus?", "options": ["Lentils", "Chickpeas", "Black beans", "Peanuts"], "correct": "Chickpeas"},
-        {
+COOKING_QUIZ = [  
+    {
         "question": "What temperature is considered safe for cooking chicken?",
         "options": ["145°F", "165°F", "175°F", "185°F"],
         "correct": "165°F"
@@ -1035,4 +1025,5 @@ elif app_mode == "Dessert Generator":
             else:
                 st.warning("Could not generate dessert recipe")
         else:
+
             st.warning("Please select ingredients")
