@@ -124,8 +124,8 @@ except Exception as e:
 COOKING_QUIZ = [
     {
         "question": "What temperature is considered safe for cooking chicken?",
-        "options": ["145Â°F", "165Â°F", "175Â°F", "185Â°F"],
-        "correct": "165Â°F"
+        "options": ["145°F", "165°F", "175°F", "185°F"],
+        "correct": "165°F"
     },
     {
         "question": "Which herb is commonly used in Italian cuisine?",
@@ -452,9 +452,9 @@ def generate_recipe_with_timeout(prompt, timeout=60):
         if "429" in str(e) or "ResourceExhausted" in str(e):
             st.error(" API limit reached. Please wait a few seconds and try again.")
         elif "Timeout" in str(e):
-            st.error("âš ï¸ Recipe generation timed out. Please try again.")
+            st.error(" Recipe generation timed out. Please try again.")
         else:
-            st.error(f"âŒ Error generating recipe: {str(e)}")
+            st.error(f"Error generating recipe: {str(e)}")
 
         return None
 
@@ -754,7 +754,7 @@ def show_user_profile(user_data):
                      user_data['quiz_stats']['correct_answers'])
     
     with tabs[4]:  # Leftovers tab
-     st.subheader("â™»ï¸ Leftover Management History")
+     st.subheader(" Leftover Management History")
      if user_data.get('leftovers'):
         # Display all leftover recipes
         for recipe in user_data['leftovers']:
@@ -767,7 +767,7 @@ def show_user_profile(user_data):
                     for ingredient in recipe['ingredients']:
                         st.write(f"- {ingredient['name']} ({ingredient['quantity']}g) - {ingredient['type']}")
                     
-                    st.write("**â²ï¸ Cooking Information:**")
+                    st.write("** Cooking Information:**")
                     st.write(f"- Meal Type: {recipe['meal_type']}")
                     st.write(f"- Cooking Time: {recipe['cooking_time']} minutes")
                     st.write(f"- Difficulty Level: {recipe['difficulty']}")
@@ -805,26 +805,26 @@ def show_user_profile(user_data):
         st.write("**🍰 Recipe Achievements**")
         for achievement in ACHIEVEMENTS['recipe_achievements']:
             earned = 'achievements' in user_data and any(a['name'] == achievement['name'] for a in user_data['achievements'])
-            st.write(f"{'âœ…' if earned else 'â­•'} {achievement['name']}: {achievement['description']}")
+            st.write(f"{'' if earned else ''} {achievement['name']}: {achievement['description']}")
         
         st.write("")  # Add spacing
         st.write("**🍰 Dessert Achievements**")
         for achievement in ACHIEVEMENTS['dessert_achievements']:
             earned = 'achievements' in user_data and any(a['name'] == achievement['name'] for a in user_data['achievements'])
-            st.write(f"{'âœ…' if earned else 'â­•'} {achievement['name']}: {achievement['description']}")
+            st.write(f"{'' if earned else ''} {achievement['name']}: {achievement['description']}")
     
       # Column 2: Leftover and Beverage Achievements
       with col2:
-        st.write("**â™»ï¸ Leftover Management Achievements**")
+        st.write("** Leftover Management Achievements**")
         for achievement in ACHIEVEMENTS['leftover_achievements']:
             earned = 'achievements' in user_data and any(a['name'] == achievement['name'] for a in user_data['achievements'])
-            st.write(f"{'âœ…' if earned else 'â­•'} {achievement['name']}: {achievement['description']}")
+            st.write(f"{'' if earned else ''} {achievement['name']}: {achievement['description']}")
         
         st.write("")  # Add spacing
         st.write("**🍹 Beverage Achievements**")
         for achievement in ACHIEVEMENTS['beverage_achievements']:
             earned = 'achievements' in user_data and any(a['name'] == achievement['name'] for a in user_data['achievements'])
-            st.write(f"{'âœ…' if earned else 'â­•'} {achievement['name']}: {achievement['description']}")
+            st.write(f"{'' if earned else ''} {achievement['name']}: {achievement['description']}")
     
     with tabs[6]:
         col1, col2 = st.columns(2)
@@ -1325,7 +1325,7 @@ elif app_mode == "Recipe Suggestions":
             )
 
 elif app_mode == "Leftover Management":
-    st.title("â™»ï¸ Leftover Management")
+    st.title("Leftover Management")
     
     # Input section with enhanced details
     st.subheader("Add Leftover Ingredient")
@@ -1498,14 +1498,14 @@ elif app_mode == "Leftover Management":
 
         if current_time - st.session_state.last_gemini_call < COOLDOWN_SECONDS:
             wait_time = int(COOLDOWN_SECONDS - (current_time - st.session_state.last_gemini_call))
-            st.warning(f"â³ Please wait {wait_time} seconds before generating another recipe.")
+            st.warning(f" Please wait {wait_time} seconds before generating another recipe.")
         else:
             recipe = generate_recipe_with_timeout(prompt)
             st.session_state.last_gemini_call = current_time
 
         if recipe:
             with st.expander("📖 View Generated Recipe", expanded=True):
-                st.success("âœ¨ Recipe generated successfully!")
+                st.success(" Recipe generated successfully!")
                 st.write(recipe)
                 
                 # Save the recipe with enhanced details
@@ -1522,7 +1522,7 @@ elif app_mode == "Leftover Management":
                 })
                 add_points(5, "Generated leftover recipe")
             # Option to remove used ingredients
-            if st.button("âœ… Mark Ingredients as Used"):
+            if st.button(" Mark Ingredients as Used"):
                 user['leftover_ingredients'] = [
                     item for item in user['leftover_ingredients']
                     if item['name'] not in selected
@@ -1681,7 +1681,7 @@ elif app_mode == "Menu Personalization":
 
             menu = generate_recipe_with_timeout(prompt)
             if menu:
-                st.success("âœ¨ Complete menu generated successfully!")
+                st.success("Complete menu generated successfully!")
                 
                 # Display the menu in an organized way
                 with st.expander("📋 View Complete Menu", expanded=True):
@@ -1758,14 +1758,14 @@ elif app_mode == "Event Manager":
         
         # Cost Estimation
         st.subheader("Cost Estimation")
-        per_person_cost = st.number_input("Estimated Cost per Person (â‚¹)", min_value=200.0, value=250.0)
+        per_person_cost = st.number_input("Estimated Cost per Person (₹)", min_value=200.0, value=250.0)
         total_cost = per_person_cost * guest_count
         
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Total Estimated Cost", f"â‚¹{total_cost:,.2f}")
+            st.metric("Total Estimated Cost", f"{total_cost:,.2f}")
         with col2:
-            st.metric("Cost per Person", f"â‚¹{per_person_cost:.2f}")
+            st.metric("Cost per Person", f"{per_person_cost:.2f}")
         with col3:
             st.metric("Total Guests", guest_count)
         
@@ -1855,7 +1855,7 @@ elif app_mode == "Event Manager":
                     st.metric("Total Revenue", f"${events_df['total_cost'].sum():,.2f}")
                 with col2:
                     st.metric("Average Event Cost", 
-                             f"â‚¹{events_df['total_cost'].mean():,.2f}")
+                             f"{events_df['total_cost'].mean():,.2f}")
 
 elif app_mode == "Cooking Quiz":
     st.title("👩‍🍳 Cooking Knowledge Quiz")
@@ -1895,7 +1895,7 @@ elif app_mode == "Cooking Quiz":
             # Update streak
             user['current_streak'] = user.get('current_streak', 0) + 1
         else:
-            st.error(f"âŒ Wrong answer. -10 points. Correct answer was: {question['correct']}")
+            st.error(f" Wrong answer. -10 points. Correct answer was: {question['correct']}")
             add_points(-10, "Wrong quiz answer")
             # Reset streak on wrong answer
             user['current_streak'] = 0
@@ -2141,4 +2141,5 @@ elif app_mode == "Dessert Generator":
                     check_achievements(user, "dessert")
         else:
             st.warning("Please select a dessert type and at least one ingredient")
+
 
