@@ -66,4 +66,4 @@ To solve these problems, I designed **PlatePals** as an all-in-one culinary assi
 * **Enforcing Structured & Safe AI Outputs:** Getting the LLM to consistently respect strict dietary rules (like Jain or Allergen-free constraints) alongside custom user "wants" and "don't wants" required iterative prompt engineering and configuring Gemini safety thresholds (`BLOCK_MEDIUM_AND_ABOVE`).
 * **Secrets & Environment Configuration:** Handling API keys across local development and deployment environments required building fallback logic to read from both `.streamlit/secrets.toml` and non-hidden `streamlit/secrets.toml` paths using `tomllib`/`toml`.
 
-* 
+
