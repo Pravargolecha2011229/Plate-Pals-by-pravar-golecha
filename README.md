@@ -1,4 +1,5 @@
 # 🍽️ PlatePals — Serve Smart. Waste Less. Know More.
+Made by Pravar Golecha
 
 Link to use the app: https://plate-pals-by-pravar-golecha.streamlit.app/
 
